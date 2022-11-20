@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+{{msg}}
+{% endblock %}
+{% block content%}
+
+{% for article in object_list %}
+<p>{{article.created_at}}<span>  :  </span>{{article.header_line}}<a href="{% url 'articledetail' 'article_id' %}">detail</a></p>
+<!--<p>{{article.reporter.author}}</p>-->
+<!--<p>{{article.created_at}}</p>-->
+<!--<p>{{article.content}}</p>-->
+{% endfor %}
+
+{% endblock %}
