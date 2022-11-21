@@ -21,4 +21,5 @@ from news import views
 urlpatterns = [
     path('',include('news.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
