@@ -14,6 +14,39 @@
 <p><strong>发布时间：</strong>{{article.created_at}}</p>
 <p><strong>正文：</strong>{{article.content}}</p>
 <img src="{% static 'USSBenfold.jpg' %}" alt="图潘">
+ <p class="head">评论详情</p>
+        {% for comment in comment_list %}
+
+            <div class="main-content">
+                <span class="user-nickname">{{ comment.user }}</span>
+                <time class="time">{{ comment.created_at }}</time>
+                <div class="comment-content">
+                    {{ comment.content }}
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
 <!--<span class="img_des" >美国海军“本福德”号导弹驱逐舰资料图片 © 网络图片</span>-->
-{% endblock %}>
+<!-- 发表评论 -->
+<div class="comment">
+    <div class="comment-main">
+
+        <form method="post" action="{% url 'comment' article.id %}">
+            {% csrf_token %}
+            <div class="row">
+                {% for field in form %}
+
+                    {{ field }}
+                    {{ field.errors }}
+                    <br>
+                {% endfor %}
+            </div>
+            <button type="submit" class="com-button">评论</button>
+        </form>
+
+        <hr>
+
+    </div>
+</div>
+{% endblock %}
 
